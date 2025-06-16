@@ -118,3 +118,5 @@ class PredRecord(db.Model):
             'processed_depth_path': self.processed_depth_path,
             'result_path': self.result_path
         }
+    
+

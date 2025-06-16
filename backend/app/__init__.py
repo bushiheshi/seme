@@ -67,6 +67,9 @@ def create_app(config_class=Config):
     from app.prediction import bp as prediction_bp
     app.register_blueprint(prediction_bp, url_prefix='/api/predictions')
     
+    from app.performance import bp as performance_bp
+    app.register_blueprint(performance_bp, url_prefix='/api/performance')
+    
     @app.route('/test')
     def test():
         return 'Hello, World!'
