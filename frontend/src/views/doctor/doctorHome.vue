@@ -186,10 +186,12 @@ const handleCommand = (command) => {
     max-width: 260px;
     transition: box-shadow 0.3s;
 }
+
 .side-header {
     padding: 40px 0 24px 0;
     text-align: center;
 }
+
 .system-title {
     font-size: 20px;
     font-weight: bold;
@@ -197,11 +199,13 @@ const handleCommand = (command) => {
     letter-spacing: 2px;
     text-shadow: 0 2px 8px #fff3d1;
 }
+
 .nav-menu {
     border-right: none;
     background: transparent;
     margin-top: 32px;
 }
+
 .nav-menu .el-menu-item {
     height: 54px;
     line-height: 54px;
@@ -214,19 +218,23 @@ const handleCommand = (command) => {
     letter-spacing: 1px;
     box-shadow: 0 2px 8px rgba(255, 231, 165, 0.08);
 }
+
 .nav-menu .el-menu-item.is-active {
     background: linear-gradient(90deg, #ffe7a5 60%, #fffbe6 100%);
     color: #e6a23c !important;
     box-shadow: 0 4px 16px #ffe7a5;
 }
+
 .nav-menu .el-menu-item:hover {
     background: #fffbe6;
     color: #e6a23c;
 }
+
 .side-footer {
     padding: 32px 0 40px 0;
     text-align: center;
 }
+
 .el-dropdown-link {
     display: flex;
     align-items: center;
@@ -239,15 +247,18 @@ const handleCommand = (command) => {
     box-shadow: 0 2px 8px #ffe7a5;
     transition: box-shadow 0.2s;
 }
+
 .el-dropdown-link:hover {
     color: #e6a23c;
     box-shadow: 0 4px 16px #ffe7a5;
 }
+
 .el-avatar {
     margin-right: 10px;
     border: 2px solid #ffe7a5;
     box-shadow: 0 2px 8px #ffe7a5;
 }
+
 .doctor-name {
     font-size: 16px;
     font-weight: 600;
@@ -255,6 +266,7 @@ const handleCommand = (command) => {
     margin-right: 6px;
     letter-spacing: 1px;
 }
+
 .main-content {
     background: linear-gradient(120deg, #fffbe6 80%, #fff9e6 100%);
     padding: 40px 40px 40px 40px;
@@ -264,6 +276,7 @@ const handleCommand = (command) => {
     border-radius: 32px;
     box-shadow: 0 4px 32px 0 rgba(247, 200, 115, 0.06);
 }
+
 .welcome-card, .guide-card {
     border-radius: 18px;
     box-shadow: 0 4px 24px 0 rgba(247, 200, 115, 0.10);
@@ -271,6 +284,7 @@ const handleCommand = (command) => {
     background: #fffef6;
     border: 1.5px solid #ffe7a5;
 }
+
 .welcome-header {
     display: flex;
     justify-content: space-between;
@@ -279,23 +293,28 @@ const handleCommand = (command) => {
     color: #e6a23c;
     font-weight: 600;
 }
+
 .welcome-content {
     color: #606266;
     font-size: 16px;
     padding: 8px 0 0 0;
 }
+
 .welcome-content ul {
     margin-top: 10px;
     padding-left: 24px;
 }
+
 .welcome-content li {
     margin-bottom: 10px;
     font-size: 15px;
 }
+
 .close-button {
     padding: 2px;
     color: #e6a23c;
 }
+
 .guide-header {
     display: flex;
     align-items: center;
@@ -304,23 +323,28 @@ const handleCommand = (command) => {
     color: #e6a23c;
     font-weight: 600;
 }
+
 .guide-icon {
     font-size: 22px;
     color: #e6a23c;
 }
+
 .prediction-steps {
     padding: 24px 16px 8px 16px;
 }
+
 .prediction-steps :deep(.el-step__title) {
     font-size: 16px;
     font-weight: bold;
     color: #e6a23c;
 }
+
 .prediction-steps :deep(.el-step__description) {
     font-size: 15px;
     color: #606266;
     margin-top: 8px;
 }
+
 .prediction-steps :deep(.el-step__icon) {
     background: linear-gradient(135deg, #ffe7a5 60%, #fffbe6 100%);
     color: #e6a23c;
@@ -328,10 +352,12 @@ const handleCommand = (command) => {
     font-size: 22px;
     box-shadow: 0 2px 8px #ffe7a5;
 }
+
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.3s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;

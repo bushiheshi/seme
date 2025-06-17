@@ -7,7 +7,8 @@ const getPatientPhoto=async(patientId)=>{
     try{
         const response = await request.get(`${BASE_URL}/api/patients/${patientId}/photo`)
         return response
-    }catch(error){
+    }
+    catch(error){
         console.error('Failed to get patient photo',error)
         throw error
     }

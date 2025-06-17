@@ -90,20 +90,23 @@ onMounted(() => {
         身份证号: patientInfo.value.id_number,
         照片URL: getFullImageUrl(patientInfo.value.photo_url)
       })
-    } catch (error) {
+    } 
+    catch (error) {
       console.error('解析患者信息失败:', error)
       console.error('错误详情:', {
         message: error.message,
         stack: error.stack
       })
     }
-  } else {
+  } 
+  else {
     console.warn('未接收到患者信息')
   }
 })
 </script>
 
 <style scoped>
+
 .patient-details {
   padding: 20px;
 }
@@ -144,4 +147,5 @@ onMounted(() => {
 .no-data {
   padding: 40px 0;
 }
+
 </style>

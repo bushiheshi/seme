@@ -153,9 +153,11 @@ const handleLogin = async () => {
         
         if (error.response?.status === 401) {
             ElMessage.error('账号或密码错误')
-        } else if (error.response?.data?.message) {
+        } 
+        else if (error.response?.data?.message) {
             ElMessage.error(error.response.data.message)
-        } else {
+        } 
+        else {
             ElMessage.error('登录失败，请稍后重试')
         }
     } finally {

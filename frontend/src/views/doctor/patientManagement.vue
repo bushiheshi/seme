@@ -162,10 +162,12 @@ const getPatientList = async () => {
             total.value = response.data.pagination.total
             console.log('患者列表数据：', patientList.value)
         }
-    } catch (error) {
+    }
+    catch (error) {
         ElMessage.error('获取患者列表失败')
         console.error(error)
-    } finally {
+    }
+    finally {
         loading.value = false
     }
 }
@@ -174,7 +176,8 @@ const getPatientList = async () => {
 const handleSearch = () => {
     if (!searchQuery.value) {
         filteredPatientList.value = patientList.value
-    } else {
+    }
+    else {
         const query = searchQuery.value.toLowerCase()
         filteredPatientList.value = patientList.value.filter(patient =>
             patient.name.toLowerCase().includes(query) ||
@@ -205,6 +208,7 @@ const handlePhotoChange = (file) => {
         ElMessage.error('只能上传图片文件!')
         return
     }
+
     if (!isLt2M) {
         ElMessage.error('图片大小不能超过 2MB!')
         return
@@ -256,7 +260,8 @@ const submitPatient = async () => {
                     dialogVisible.value = false
                     getPatientList()
                 }
-            } catch (error) {
+            }
+            catch (error) {
                 ElMessage.error('添加患者失败：' + error.response?.data?.message || error.message)
             }
         }
@@ -316,7 +321,8 @@ const handleDelete = (row) => {
             // await axios.delete(`/api/patients/${row.id}`)
             ElMessage.success('删除成功')
             getPatientList()
-        } catch (error) {
+        }
+        catch (error) {
             ElMessage.error('删除失败')
         }
     }).catch(() => { })
@@ -325,6 +331,7 @@ const handleDelete = (row) => {
 onMounted(() => {
     getPatientList()
 })
+
 </script>
 
 <style scoped>

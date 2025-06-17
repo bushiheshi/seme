@@ -197,13 +197,16 @@ const submitImport = async () => {
             ElMessage.success('序列导入成功')
             importDialogVisible.value = false
             fetchSequences() // 刷新序列列表
-        } else {
+        } 
+        else {
             ElMessage.error(response.data.message || '序列导入失败')
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('导入序列失败:', error)
         ElMessage.error(error.response?.data?.message || '导入失败，请稍后重试')
-    } finally {
+    } 
+    finally {
         importing.value = false
     }
 }
@@ -226,10 +229,12 @@ const fetchSequences = async () => {
         if (response.data.success) {
             sequences.value = response.data.sequences
             patientInfo.value = response.data.patient
-        } else {
+        } 
+        else {
             ElMessage.error(response.data.message || '获取序列列表失败')
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('获取序列列表失败:', error)
         console.error('错误详情:', {
             message: error.message,
@@ -237,7 +242,8 @@ const fetchSequences = async () => {
             response: error.response
         })
         ElMessage.error('获取序列列表失败，请稍后重试')
-    } finally {
+    } 
+    finally {
         loading.value = false
     }
 }
@@ -304,4 +310,5 @@ onMounted(() => {
     max-height: 200px;
     overflow-y: auto;
 }
+
 </style>

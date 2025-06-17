@@ -86,13 +86,16 @@ const getDoctorList = async () => {
                 is_locked: doctor.locked_until && new Date(doctor.locked_until) > new Date()
             }))
             handleSearch()
-        } else {
+        } 
+        else {
             ElMessage.error(response.message || '获取医生列表失败')
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('获取医生列表失败:', error)
         ElMessage.error('获取医生列表失败')
-    } finally {
+    } 
+    finally {
         loading.value = false
     }
 }
@@ -128,10 +131,12 @@ const handleBan = (row) => {
             if (response.success) {
                 ElMessage.success('医生已被封禁')
                 getDoctorList() // 刷新列表
-            } else {
+            } 
+            else {
                 ElMessage.error(response.message || '封禁失败')
             }
-        } catch (error) {
+        } 
+        catch (error) {
             console.error('封禁医生失败:', error)
             ElMessage.error('封禁失败')
         }
@@ -156,7 +161,8 @@ const handleUnban = (row) => {
             if (response.success) {
                 ElMessage.success('已解除医生封禁')
                 getDoctorList() // 刷新列表
-            } else {
+            } 
+            else {
                 ElMessage.error(response.message || '解除封禁失败')
             }
         } catch (error) {
@@ -171,6 +177,7 @@ const handleUnban = (row) => {
 onMounted(() => {
     getDoctorList()
 })
+
 </script>
 
 <style scoped>

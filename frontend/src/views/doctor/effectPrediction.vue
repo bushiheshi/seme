@@ -261,7 +261,8 @@ const openSequence = async (sequence) => {
             console.log('RGB图像item_id列表:', rgbIds)
             console.log('深度图像item_id列表:', depthIds)
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('获取序列详情失败:', error)
         ElMessage.error('获取序列详情失败')
     }
@@ -292,7 +293,8 @@ const selectImageType = async (type) => {
             console.log('图像item_id列表:', imageItemIds.value)
             localStorage.setItem('imageItemIds', JSON.stringify(imageItemIds.value))
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('获取图像列表失败:', error)
     }
 
@@ -314,7 +316,8 @@ const selectImageType = async (type) => {
             const blob = new Blob([response.data], { type: 'image/jpeg' })
             const imageUrl = URL.createObjectURL(blob)
             thumbnailUrls.value.push(imageUrl)
-        } catch (error) {
+        } 
+        catch (error) {
             console.error('获取缩略图失败:', error)
             thumbnailUrls.value.push('')
         }
@@ -335,7 +338,8 @@ const getPatientList = async () => {
         if (response.data.success) {
             patientList.value = response.data.patients
         }
-    } catch (error) {
+    } 
+    catch (error) {
         ElMessage.error('获取患者列表失败')
         console.error(error)
     }
@@ -354,7 +358,8 @@ const getSequences = async (patientId) => {
         if (response.data.success) {
             sequences.value = response.data.sequences
         }
-    } catch (error) {
+    } 
+    catch (error) {
         ElMessage.error('获取MRI序列失败')
         console.error(error)
     }
@@ -388,7 +393,8 @@ const fetchCurrentImage = async () => {
         img.onload = () => {
             imageLoading.value = false
         }
-    } catch (error) {
+    } 
+    catch (error) {
         ElMessage.error('获取图片失败')
         console.error(error)
         currentImage.value = ''
@@ -420,7 +426,8 @@ const submitForm = async () => {
             try {
                 // TODO: 调用后端预测API
                 ElMessage.success('预测完成')
-            } catch (error) {
+            } 
+            catch (error) {
                 ElMessage.error('预测失败')
             }
         }
@@ -531,7 +538,8 @@ const confirmCrop = () => {
         // 销毁 cropper 实例
         cropper.destroy()
         cropper = null
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('裁剪失败:', error)
         ElMessage.error('裁剪失败')
     }
@@ -590,7 +598,8 @@ const handleNeedleClick = (event) => {
         if (clickedPointIndex !== -1) {
             needlePoints.value.splice(clickedPointIndex, 1)
         }
-    } else { // 左键添加针点
+    } 
+    else { // 左键添加针点
         if (clickedPointIndex === -1 && x >= 0 && x <= 352 && y >= 0 && y <= 352) {
             needlePoints.value.push({
                 x: cropX,
@@ -677,10 +686,12 @@ const confirmNeedling = async () => {
             ElMessage.success('布针图片保存成功')
             isNeedling.value = false
             showPredictButton.value = true  // 显示预测按钮
-        } else {
+        } 
+        else {
             throw new Error(response.data.message || '保存失败')
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('保存布针图片失败:', error)
         console.error('错误详情:', error.response?.data || error.message)
         ElMessage.error('保存布针图片失败')
@@ -747,7 +758,8 @@ const predict = async () => {
             ]
             const randomIndex = Math.floor(Math.random() * resultImages.length)
             resultUrl = resultImages[randomIndex]
-        } else {
+        } 
+        else {
             // 正常预测流程
             const response = await axios.post(
                 'http://localhost:5000/api/predictions/predict',
@@ -806,7 +818,8 @@ const predict = async () => {
         }
 
         ElMessage.success('预测完成')
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('预测失败:', error)
         ElMessage.error('预测失败: ' + (error.response?.data?.message || error.message))
     } finally {

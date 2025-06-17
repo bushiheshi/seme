@@ -129,10 +129,12 @@ const fetchSequenceDetail = async () => {
                     }
                 }))
             }
-        } else {
+        } 
+        else {
             ElMessage.error(response.data.message || '获取序列详情失败')
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('获取序列详情失败:', error)
         console.error('错误详情:', {
             message: error.message,
@@ -140,7 +142,8 @@ const fetchSequenceDetail = async () => {
             response: error.response
         })
         ElMessage.error('获取序列详情失败，请稍后重试')
-    } finally {
+    } 
+    finally {
         loading.value = false
     }
 }
@@ -148,6 +151,7 @@ const fetchSequenceDetail = async () => {
 onMounted(() => {
     fetchSequenceDetail()
 })
+
 </script>
 
 <style scoped>

@@ -4,7 +4,9 @@
             <template #header>
                 <div class="card-header">
                     <div class="header-left">
-                        <el-icon class="header-icon"><Document /></el-icon>
+                        <el-icon class="header-icon">
+                            <Document />
+                        </el-icon>
                         <span>预测记录列表</span>
                     </div>
                     <div class="header-right">
@@ -15,33 +17,26 @@
 
             <!-- 搜索区域 -->
             <div class="search-area">
-                <el-input
-                    v-model="searchQuery"
-                    placeholder="输入患者姓名搜索"
-                    clearable
-                    @clear="handleSearch"
-                    @input="handleSearch"
-                    class="search-input"
-                >
+                <el-input v-model="searchQuery" placeholder="输入患者姓名搜索" clearable @clear="handleSearch"
+                    @input="handleSearch" class="search-input">
                     <template #prefix>
-                        <el-icon><Search /></el-icon>
+                        <el-icon>
+                            <Search />
+                        </el-icon>
                     </template>
                 </el-input>
             </div>
 
             <!-- 记录列表 -->
-            <el-table 
-                :data="filteredRecords" 
-                style="width: 100%" 
-                v-loading="loading"
-                :header-cell-style="{ background: '#f5f7fa', color: '#606266' }"
-                :row-class-name="tableRowClassName"
-                @row-click="handleRowClick"
-            >
+            <el-table :data="filteredRecords" style="width: 100%" v-loading="loading"
+                :header-cell-style="{ background: '#f5f7fa', color: '#606266' }" :row-class-name="tableRowClassName"
+                @row-click="handleRowClick">
                 <el-table-column prop="patientName" label="患者姓名" min-width="120">
                     <template #default="scope">
                         <div class="patient-name">
-                            <el-icon><User /></el-icon>
+                            <el-icon>
+                                <User />
+                            </el-icon>
                             <span>{{ scope.row.patientName }}</span>
                         </div>
                     </template>
@@ -54,20 +49,19 @@
                 <el-table-column prop="predTime" label="预测时间" min-width="180">
                     <template #default="scope">
                         <div class="pred-time">
-                            <el-icon><Timer /></el-icon>
+                            <el-icon>
+                                <Timer />
+                            </el-icon>
                             <span>{{ formatDate(scope.row.predTime) }}</span>
                         </div>
                     </template>
                 </el-table-column>
                 <el-table-column label="操作" width="120" fixed="right">
                     <template #default="scope">
-                        <el-button 
-                            type="primary" 
-                            link 
-                            @click.stop="showDetails(scope.row)"
-                            class="detail-button"
-                        >
-                            <el-icon><View /></el-icon>
+                        <el-button type="primary" link @click.stop="showDetails(scope.row)" class="detail-button">
+                            <el-icon>
+                                <View />
+                            </el-icon>
                             查看详情
                         </el-button>
                     </template>
@@ -76,25 +70,19 @@
         </el-card>
 
         <!-- 详情对话框 -->
-        <el-dialog
-            v-model="detailsVisible"
-            title="预测记录详情"
-            width="70%"
-            :before-close="handleCloseDialog"
-            class="details-dialog"
-        >
+        <el-dialog v-model="detailsVisible" title="预测记录详情" width="70%" :before-close="handleCloseDialog"
+            class="details-dialog">
             <div class="record-details" v-if="selectedRecord" v-loading="imageLoading">
                 <div class="details-section">
                     <h3>
-                        <el-icon><InfoFilled /></el-icon>
+                        <el-icon>
+                            <InfoFilled />
+                        </el-icon>
                         基本信息
-                        <el-button 
-                            type="primary" 
-                            link 
-                            class="show-all-button"
-                            @click="showAllRecords"
-                        >
-                            <el-icon><List /></el-icon>
+                        <el-button type="primary" link class="show-all-button" @click="showAllRecords">
+                            <el-icon>
+                                <List />
+                            </el-icon>
                             查看所有记录
                         </el-button>
                     </h3>
@@ -113,31 +101,42 @@
 
                 <div class="images-section">
                     <h3>
-                        <el-icon><Picture /></el-icon>
+                        <el-icon>
+                            <Picture />
+                        </el-icon>
                         预测图像
                     </h3>
                     <div class="image-grid">
                         <div class="image-item">
                             <div class="image-header">
-                                <el-icon><Camera /></el-icon>
+                                <el-icon>
+                                    <Camera />
+                                </el-icon>
                                 <h4>原始RGB图像</h4>
                             </div>
-                            <div class="image-container" @click="previewImage(getImageUrl(selectedRecord.processed_rgb_path))">
+                            <div class="image-container"
+                                @click="previewImage(getImageUrl(selectedRecord.processed_rgb_path))">
                                 <img :src="getImageUrl(selectedRecord.processed_rgb_path)" alt="原始RGB图像" />
                                 <div class="image-overlay">
-                                    <el-icon><ZoomIn /></el-icon>
+                                    <el-icon>
+                                        <ZoomIn />
+                                    </el-icon>
                                 </div>
                             </div>
                         </div>
                         <div class="image-item">
                             <div class="image-header">
-                                <el-icon><Star /></el-icon>
+                                <el-icon>
+                                    <Star />
+                                </el-icon>
                                 <h4>预测结果</h4>
                             </div>
                             <div class="image-container" @click="previewImage(getImageUrl(selectedRecord.result_path))">
                                 <img :src="getImageUrl(selectedRecord.result_path)" alt="预测结果" />
                                 <div class="image-overlay">
-                                    <el-icon><ZoomIn /></el-icon>
+                                    <el-icon>
+                                        <ZoomIn />
+                                    </el-icon>
                                 </div>
                             </div>
                         </div>
@@ -147,27 +146,19 @@
         </el-dialog>
 
         <!-- 侧拉栏 -->
-        <el-drawer
-            v-model="drawerVisible"
-            title="所有预测记录"
-            direction="rtl"
-            size="500px"
-            :destroy-on-close="false"
-        >
+        <el-drawer v-model="drawerVisible" title="所有预测记录" direction="rtl" size="500px" :destroy-on-close="false">
             <div class="drawer-content">
                 <div class="drawer-header">
-                    <el-input
-                        v-model="drawerSearchQuery"
-                        placeholder="搜索记录..."
-                        clearable
-                        class="drawer-search"
-                    >
+                    <el-input v-model="drawerSearchQuery" placeholder="搜索记录..." clearable class="drawer-search">
                         <template #prefix>
-                            <el-icon><Search /></el-icon>
+                            <el-icon>
+                                <Search />
+                            </el-icon>
                         </template>
                     </el-input>
                     <div class="selection-controls">
-                        <el-button type="primary" link @click="selectAll" :disabled="selectedRecords.length === filteredDrawerRecords.length">
+                        <el-button type="primary" link @click="selectAll"
+                            :disabled="selectedRecords.length === filteredDrawerRecords.length">
                             全选
                         </el-button>
                         <el-button type="danger" link @click="clearSelection" :disabled="selectedRecords.length === 0">
@@ -176,22 +167,20 @@
                         <span class="selection-count">已选择 {{ selectedRecords.length }} 项</span>
                     </div>
                 </div>
-                
+
                 <el-scrollbar height="calc(100vh - 260px)">
                     <div class="record-list">
-                        <div 
-                            v-for="record in showSelectedOnly ? selectedRecords : filteredDrawerRecords" 
-                            :key="record.pred_id"
-                            class="record-item"
-                            :class="{ 'selected': isSelected(record) }"
-                            @click="toggleRecordSelection(record)"
-                        >
+                        <div v-for="record in showSelectedOnly ? selectedRecords : filteredDrawerRecords"
+                            :key="record.pred_id" class="record-item" :class="{ 'selected': isSelected(record) }"
+                            @click="toggleRecordSelection(record)">
                             <div class="record-item-header">
                                 <el-tag size="small">{{ record.patientName }}</el-tag>
                                 <el-tag size="small" type="success">{{ record.sequenceName }}</el-tag>
                             </div>
                             <div class="record-item-time">
-                                <el-icon><Timer /></el-icon>
+                                <el-icon>
+                                    <Timer />
+                                </el-icon>
                                 <span>{{ formatDate(record.predTime) }}</span>
                             </div>
                             <div class="record-item-preview">
@@ -219,19 +208,15 @@
         </el-drawer>
 
         <!-- 图片预览 -->
-        <el-image-viewer
-            v-if="showViewer"
-            :url-list="[previewUrl]"
-            @close="showViewer = false"
-        />
+        <el-image-viewer v-if="showViewer" :url-list="[previewUrl]" @close="showViewer = false" />
     </div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { 
-    Search, Document, User, Timer, View, InfoFilled, 
-    Picture, Camera, Star, ZoomIn, List 
+import {
+    Search, Document, User, Timer, View, InfoFilled,
+    Picture, Camera, Star, ZoomIn, List
 } from '@element-plus/icons-vue'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
@@ -259,9 +244,9 @@ const showAllRecords = () => {
 // 过滤侧拉栏记录
 const filteredDrawerRecords = computed(() => {
     if (!drawerSearchQuery.value) return records.value
-    
+
     const query = drawerSearchQuery.value.toLowerCase()
-    return records.value.filter(record => 
+    return records.value.filter(record =>
         record.patientName.toLowerCase().includes(query) ||
         record.sequenceName.toLowerCase().includes(query)
     )
@@ -272,7 +257,8 @@ const toggleRecordSelection = (record) => {
     const index = selectedRecords.value.findIndex(r => r.pred_id === record.pred_id && r.predTime === record.predTime)
     if (index === -1) {
         selectedRecords.value.push({ ...record })
-    } else {
+    } 
+    else {
         selectedRecords.value.splice(index, 1)
     }
 }
@@ -302,17 +288,20 @@ const getRecords = async () => {
                 'Authorization': `Bearer ${token}`
             }
         })
-        
+
         if (response.data.success) {
             records.value = response.data.records
             console.log('获取到的预测记录:', records.value)
-        } else {
+        } 
+        else {
             throw new Error(response.data.message || '获取预测记录失败')
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('获取预测记录失败:', error)
         ElMessage.error(error.response?.data?.message || '获取预测记录失败')
-    } finally {
+    } 
+    finally {
         loading.value = false
     }
 }
@@ -332,9 +321,9 @@ const handleSearch = () => {
 // 过滤后的记录列表
 const filteredRecords = computed(() => {
     if (!searchQuery.value) return records.value
-    
+
     const query = searchQuery.value.toLowerCase()
-    return records.value.filter(record => 
+    return records.value.filter(record =>
         record.patientName.toLowerCase().includes(query)
     )
 })
@@ -432,7 +421,8 @@ onMounted(() => {
     max-width: 300px;
 }
 
-.patient-name, .pred-time {
+.patient-name,
+.pred-time {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -681,4 +671,4 @@ onMounted(() => {
     gap: 12px;
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
 }
-</style> 
+</style>

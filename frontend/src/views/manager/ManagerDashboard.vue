@@ -11,6 +11,7 @@
 </script>
 
 <style scoped>
+
 .manager-dashboard {
     padding: 20px;
 }

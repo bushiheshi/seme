@@ -123,9 +123,11 @@ const passwordRules = {
             validator: (rule, value, callback) => {
                 if (value === '') {
                     callback(new Error('请再次输入密码'))
-                } else if (value !== passwordForm.value.newPassword) {
+                } 
+                else if (value !== passwordForm.value.newPassword) {
                     callback(new Error('两次输入密码不一致!'))
-                } else {
+                } 
+                else {
                     callback()
                 }
             },
@@ -142,7 +144,8 @@ const getProfile = async () => {
             const doctorInfo = JSON.parse(storedInfo)
             profileForm.value = { ...doctorInfo }
         }
-    } catch (error) {
+    } 
+    catch (error) {
         ElMessage.error('获取个人信息失败')
     }
 }
@@ -171,7 +174,8 @@ const submitForm = async () => {
                 isEditing.value = false
                 // 更新本地存储的信息
                 localStorage.setItem('doctorInfo', JSON.stringify(profileForm.value))
-            } catch (error) {
+            } 
+            catch (error) {
                 ElMessage.error('保存失败')
             }
         }
@@ -189,7 +193,8 @@ const changePassword = async () => {
                 // await axios.put('/api/doctor/password', passwordForm.value)
                 ElMessage.success('密码修改成功')
                 passwordFormRef.value.resetFields()
-            } catch (error) {
+            } 
+            catch (error) {
                 ElMessage.error('密码修改失败')
             }
         }
